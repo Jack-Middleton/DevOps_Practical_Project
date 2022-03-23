@@ -5,7 +5,7 @@ import requests
 
 @app.route('/')
 def index():
-    personal = requests.get('http://personal-api:5000/get-name')
-    nd_stats = requests.get('http://stats-api:5000/get-nondependant-stats')
-    jumping = requests.post('http://player-api:5000/jumping-reach', json=dict(height=personal.json()['height']))
-    return f'{personal.json()}'
+    personal = requests.get('http://personal-api:5000/get-personal-info')
+    nd_stats = requests.get('http://nd_stats-api:5000/get-nondependant-stats')
+    jumping = requests.post('http://d_stats-api:5000/dependant-stats', json=dict(height=personal.json()['height'], weight=['weight'], position= ['position']))
+    return f'{personal.json()} | {nd_stats.json()} | {jumping.json()}'

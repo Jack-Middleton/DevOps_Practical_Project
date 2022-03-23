@@ -31,18 +31,18 @@ services:
    replicas: 3
   networks:
    - 'practical-network'
- player-api:
-  container_name: player-api
-  image: jackmqa/player-api:latest
-  build: ./player-api
+ d_stats-api:
+  container_name: d_stats-api
+  image: jackmqa/d_stats-api:latest
+  build: ./d_stats-api
   deploy:
    replicas: 3
   networks:
    - 'practical-network'
- stats-api:
-  container_name: stats-api
-  image: jackmqa/stats-api:latest
-  build: ./stats-api
+ nd_stats-api:
+  container_name: nd_stats-api
+  image: jackmqa/nd_stats-api:latest
+  build: ./nd_stats-api
   deploy:
    replicas: 3
   networks:

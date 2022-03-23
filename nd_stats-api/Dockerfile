@@ -1,5 +1,5 @@
 FROM python:3.8
-WORKDIR /player-api
+WORKDIR /nd_stats-api
 COPY . .
 RUN pip3 install -r requirements.txt
 EXPOSE 5000
