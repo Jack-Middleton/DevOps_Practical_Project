@@ -1,4 +1,7 @@
 version: "3.8"
+networks: 
+  practical-network:
+   # driver: overlay - uncomment on deployment
 services:
  nginx:
   container_name: nginx
@@ -10,25 +13,37 @@ services:
    - type: bind
      source: ./nginx.conf
      target: /etc/nginx/nginx.conf
+  networks:
+   - 'practical-network'
+  depends_on:
+   - 'front-end'
  front-end:
   container_name: front-end
   image: jackmqa/front-end:latest
   build: ./front-end
+  networks:
+   - 'practical-network'
  personal-api:
   container_name: personal-api
   image: jackmqa/personal-api:latest
   build: ./personal-api
   deploy:
    replicas: 3
+  networks:
+   - 'practical-network'
  player-api:
   container_name: player-api
   image: jackmqa/player-api:latest
   build: ./player-api
   deploy:
    replicas: 3
+  networks:
+   - 'practical-network'
  stats-api:
   container_name: stats-api
   image: jackmqa/stats-api:latest
   build: ./stats-api
   deploy:
    replicas: 3
+  networks:
+   - 'practical-network'
