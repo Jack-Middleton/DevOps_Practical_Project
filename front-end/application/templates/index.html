@@ -1,0 +1,22 @@
+{% extends 'layout.html' %} 
+{% block body %} 
+<h2> Home </h2>
+<br> 
+<h3> Generated Player </h3>
+<br>
+{% for k,v in personal_stats.items() %} 
+{{ k }} : {{ v }} 
+<br>
+{% endfor %} 
+<br>
+{% for k,v in non_dependant.items() %} 
+{{ k }} : {{ v }} 
+<br>
+{% endfor %} 
+<br>
+{% for k,v in dependant.items() %} 
+{{ k }} : {{ v }} 
+<br>
+{% endfor %} 
+
+{% endblock body %}
