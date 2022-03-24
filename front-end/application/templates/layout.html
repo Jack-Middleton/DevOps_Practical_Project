@@ -1,12 +1,31 @@
 <html>
-    <body style="background-color: lightblue"> 
 
-        <h1> Player Generator </h1>
+    <head> 
+        <title> Player Generator </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    </head>
+    <body style="background-color: lightblue; font-family: Garamond, Serif"> 
+
+        <h1 class="header"> Player Generator </h1>
         <br>
-        <a href="{{ url_for('index') }}"> Refresh </a>
+        <button type="button" class="btn btn-primary" style="color: white"><a href="{{ url_for('index') }}"> Refresh </a></button>
         {% block body %} 
         {% endblock %}
 
     </body>
 
+
+    <style>
+        a, a:hover, a:after{
+            color: white;
+        }
+        h3{
+            line-height: 34px;
+            height: 35px;
+        }
+    </style>
 </html>
