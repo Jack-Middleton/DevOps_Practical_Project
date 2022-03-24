@@ -1,14 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('test') {
-            steps {
-                dir('flask-app') {
-                    sh "rm application/tests/test_int*"
-                    sh "bash test_basic.sh"
-                }
-            }
-        }
+        // stage('test') {
+        //     steps {
+        //         dir('flask-app') {
+        //             sh "rm application/tests/test_int*"
+        //             sh "bash test_basic.sh"
+        //         }
+        //     }
+        // }  uncomment when tests are written
         stage('build and push') {
             environment {
                 DOCKER_CREDS = credentials('docker-creds')
@@ -35,5 +35,3 @@ pipeline {
         }
     }
 }
-
-// not currently set up with a webhook, finish linking everything up once application has been written
