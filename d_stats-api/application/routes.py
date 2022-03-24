@@ -45,18 +45,10 @@ def dependant_stats():
         physical_cap = 20
         physical_base = 10
     
-    # acceleration
-    acc = randint(speed_base, speed_cap)
-    # agility
-    agi = randint(speed_base, speed_cap)
-    # balance
-    bal = randint(physical_base, physical_cap)
-    # pace
-    pac = randint(speed_base, speed_cap)
-    # stamina
-    sta = randint(physical_base, physical_cap)
-    # strength
-    str_ = randint(physical_base, physical_cap)
+    physical_stats = {'acceleration':[speed_base, speed_cap], 'agility':[speed_base, speed_cap], 'balance':[physical_base, physical_cap], \
+    'pace':[speed_base, speed_cap], 'stamina':[physical_base, physical_cap], 'strength':[physical_base, physical_cap]}
+    for k,v in physical_stats.items():
+        globals()[k]=randint(v[0], v[1])
 
     # check if position is goalkeeper first, if so, determine GK stats
     # otherwise, use position to determine caps for other stats
@@ -66,30 +58,11 @@ def dependant_stats():
     GK_stats = False
     if position == 'GK':
         GK_stats = True
-        # Aerial Reach
-        aer = randint(1,20)
-        # Command of Area
-        coa = randint(1,20)
-        # Communication
-        comm = randint(1,20)
-        # Eccentricity
-        ecc = randint(1,20)
-        # First Touch
-        ft = randint(1,20)
-        # Handling
-        hand = randint(1,20)
-        # Kicking
-        kick = randint(1,20)
-        # One on Ones
-        one = randint(1,20)
-        # Punching (tendency)
-        punch = randint(1,20)
-        # Reflexes
-        ref = randint(1,20)
-        # Rushing Out (tendency)
-        rush = randint(1,20)
-        # Throwing
-        throw = randint(1,20)
+        gk_stats = ['aerial_reach', 'command_of_area','communication', 'eccentricity', 'first_touch', 'handling', 'kicking', 'one_on_ones', 'punching', \
+        'reflexes', 'rushing_out', 'throwing']
+        for stat in gk_stats:
+            globals()[stat]=randint(1,20)
+
     elif 'B' in position:
         # confirms that the player is one of the defensive positions
         # will likely have a higher base tackling & marking
@@ -105,30 +78,18 @@ def dependant_stats():
         mid_base = 6
 
     # now that the caps are determined, another round of randomly generated stats
-    # corners
-    cor = randint(mid_base, 20)
-    # crossing
-    cross = randint(mid_base, 20)
-    # dribbling
-    drib = randint(str_base, 20)
-    # finishing
-    fin = randint(str_base, 20)
-    # heading 
-    head = randint(1,20)
-    # long shots
-    long = randint(mid_base, 20)
-    # long throws 
-    long_t = randint(1,20)
-    # marking
-    mark = randint(def_base, 20)
-    # tackling
-    tack = randint(def_base, 20)
+    outfield = {'corners': mid_base, 'crossing':mid_base,'dribbling': str_base, 'finishing': str_base, 'heading': 1, 'long_shots': mid_base, 'long_throws': 1,\
+         'marking': def_base, 'tackling': def_base}
+    for k,v in outfield.items():
+        globals()[k]=randint(v,20)
 
     if GK_stats:
-        return jsonify(jumping_reach=jumping, acceleration=acc, agility=agi, balance=bal, pace=pac, stamina=sta, strength=str_, \
-        aerial_reach=aer, command_of_area=coa,communication=comm, eccentricity=ecc, first_touch=ft, handling=hand, kicking=kick, \
-        one_on_ones=one, punching_tendency=punch, reflexes=ref, rushing_out_tendency=rush, throwing=throw)
+        return jsonify(jumping_reach=jumping, acceleration=acceleration, agility=agility, balance=balance, pace=pace, stamina=stamina, strength=strength, \
+        aerial_reach=aerial_reach, command_of_area=command_of_area,communication=communication, eccentricity=eccentricity, first_touch=first_touch,\
+             handling=handling, kicking=kicking, \
+        one_on_ones=one_on_ones, punching_tendency=punching, reflexes=reflexes, rushing_out_tendency=rushing_out, throwing=throwing)
     else:
-        return jsonify(jumping_reach=jumping, acceleration=acc, agility=agi, balance=bal, pace=pac, stamina=sta, strength=str_, \
-        corners=cor, crossing=cross, dribbling=drib, finishing=fin, heading=head, long_shots=long, long_throws=long_t, marking=mark, tackling=tack)
+        return jsonify(jumping_reach=jumping, acceleration=acceleration, agility=agility, balance=balance, pace=pace, stamina=stamina, strength=strength, \
+        corners=corners, crossing=crossing, dribbling=dribbling, finishing=finishing, heading=heading, long_shots=long_shots, long_throws=long_throws,\
+             marking=marking, tackling=tackling)
 

@@ -33,7 +33,7 @@ def get_name():
     pref_foot = choice(preferred_foot)
 
     # returns the information for the front-end / other routes to work with
-    return jsonify(name=name, height=height, weight=weight, position=position, nationality=nationality, pref_foot = pref_foot)
+    return jsonify(name=name, height=height, weight=weight, position=position, nationality=nationality, pref_foot=pref_foot)
 
 
 
