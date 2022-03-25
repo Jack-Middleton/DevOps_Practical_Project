@@ -28,9 +28,9 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            archiveArtifacts artifacts: "*/htmlcov/*"
-        }
-    }
+    // post {
+    //     always {
+    //         archiveArtifacts artifacts: "*/htmlcov/*"
+    //     }
+    // } uncomment when testing written
 }
