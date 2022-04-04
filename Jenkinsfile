@@ -22,9 +22,9 @@ pipeline {
         }
         stage('deploy stack') {
             steps {
-                sh "scp ./docker-compose.yaml jenkins@swarm-manager:/home/jenkins/docker-compose.yaml"
-                sh "scp ./nginx.conf jenkins@swarm-manager:/home/jenkins/nginx.conf"
-                sh "ssh jenkins@swarm-manager < deploy.sh"
+                sh "scp ./docker-compose.yaml jenkins@ansible-sm:/home/jenkins/docker-compose.yaml"
+                sh "scp ./nginx.conf jenkins@ansible-sm:/home/jenkins/nginx.conf"
+                sh "ssh jenkins@ansible-sm < deploy.sh"
             }
         }
     }
