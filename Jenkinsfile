@@ -1,14 +1,7 @@
 pipeline {
     agent any
     stages {
-        // stage('test') {
-        //     steps {
-        //         dir('flask-app') {
-        //             sh "rm application/tests/test_int*"
-        //             sh "bash test_basic.sh"
-        //         }
-        //     }
-        // }  uncomment when tests are written
+
         stage('build and push') {
             environment {
                 DOCKER_CREDS = credentials('docker-creds')
@@ -28,9 +21,5 @@ pipeline {
             }
         }
     }
-    // post {
-    //     always {
-    //         archiveArtifacts artifacts: "*/htmlcov/*"
-    //     }
-    // } uncomment when testing written
+
 }
