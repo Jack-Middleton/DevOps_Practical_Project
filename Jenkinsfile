@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Run unit tests') {
+            steps {
+                sh "bash test.sh"
+            }
+        }
 
         stage('build and push') {
             environment {
@@ -21,5 +26,9 @@ pipeline {
             }
         }
     }
-
+    post {
+        always {
+            archiveArtifacts artifacts: "*/htmlcov/*"
+        }
+    }
 }
