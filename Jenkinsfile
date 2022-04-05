@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Run unit tests') {
+            steps {
+                sh "bash test.sh"
+            }
+        }
 
         stage('build and push') {
             environment {
@@ -20,6 +25,15 @@ pipeline {
                 sh "ssh jenkins@ansible-sm < deploy.sh"
             }
         }
+        post {
+            always {
+                junit '**/*.xml'
+                cobertura coberturaReportFile: 'front-end/coverage.xml', failNoReports: false
+                cobertura coberturaReportFile: 'name-api/coverage.xml', failNoReports: false
+                cobertura coberturaReportFile: 'unit-api/coverage.xml', failNoReports: false
+                cobertura coberturaReportFile: 'effect-api/coverage.xml', failNoReports: false
+        }
+    }
     }
 
 }
