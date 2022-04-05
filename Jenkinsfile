@@ -26,5 +26,9 @@ pipeline {
             }
         }
     }
-
+    post {
+        always {
+            archiveArtifacts artifacts: "flask-app/htmlcov/*"
+        }
+    }
 }
