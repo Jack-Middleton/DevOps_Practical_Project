@@ -28,7 +28,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: "flask-app/htmlcov/*"
+            archiveArtifacts artifacts: "*/htmlcov/*"
         }
     }
 }
