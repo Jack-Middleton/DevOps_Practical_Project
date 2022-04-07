@@ -1,1 +1,1 @@
-{{hostvars['ansible-jenkins-1']['jenks_pubkey']['stdout']}}
+{{hostvars['ansible-jenkins-2']['jenks_pubkey']['stdout']}}
