@@ -1,0 +1,49 @@
+version: "3.8"
+networks: 
+  practical-network:
+    driver: overlay
+services:
+ nginx:
+  container_name: nginx
+  image: nginx:latest
+  ports:
+   - target: 80
+     published: 80
+  volumes:
+   - type: bind
+     source: ./nginx.conf
+     target: /etc/nginx/nginx.conf
+  networks:
+   - 'practical-network'
+  depends_on:
+   - 'front-end'
+ front-end:
+  container_name: front-end
+  image: jackmqa/front-end:latest
+  build: ./front-end
+  networks:
+   - 'practical-network'
+ personal-api:
+  container_name: personal-api
+  image: jackmqa/personal-api:latest
+  build: ./personal-api
+  deploy:
+   replicas: 3
+  networks:
+   - 'practical-network'
+ d_stats-api:
+  container_name: d_stats-api
+  image: jackmqa/d_stats-api:latest
+  build: ./d_stats-api
+  deploy:
+   replicas: 3
+  networks:
+   - 'practical-network'
+ nd_stats-api:
+  container_name: nd_stats-api
+  image: jackmqa/nd_stats-api:latest
+  build: ./nd_stats-api
+  deploy:
+   replicas: 3
+  networks:
+   - 'practical-network'

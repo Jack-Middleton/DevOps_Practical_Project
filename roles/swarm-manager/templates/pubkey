@@ -1,0 +1,1 @@
+{{hostvars['ansible-jenkins-1']['jenks_pubkey']['stdout']}}
