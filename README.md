@@ -60,7 +60,7 @@ The brief for this project was to produce an application consisting of four micr
 ### Project Planning
 While planning this project a full risk assessment was undertaken in order to identify hazards associated with this project, as shown below: 
 
-![risk assessment](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/readme/readme_images/Risk%20Assessment.png)
+![risk assessment](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/Risk%20Assessment.png)
 
 Since users are not submitting any information to this app, the main focus of this risk assessment was on operational risks ie; those associated with building and deployment. An SQL database was not used either so I didnt have to worry about environment keys being leaked as they were not used in the development of this application.
 
@@ -80,7 +80,7 @@ In response to this brief I have decided to develop a football player generator,
 In addition to these main services, a reverse proxy NGINX was implemented. The NGINX service listens to port 80 on the host machine and performs a proxy pass, directing traffic from port 80 on the host to port 5000 on the front-end container where the app is accessible. 
 The image below shows the front-end in action:
 
-![Front-End](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/readme/readme_images/App%20webpage.png)
+![Front-End](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/App%20webpage.png)
 
 The image shows the front-end, zoomed out to show all the statistics in one screenshot. The refresh button at the top will create a new character each time it is pressed. In future I would like to integrate an SQL database so that I can add save functionality to the home page so any particularly favourable generations can be saved by the user, this would also include some kind of login functionality so each user only see's what they personally have saved. The risk assessment will be updated accordingly when this work takes place. 
 
@@ -103,13 +103,13 @@ The project utilises a full CI/CD pipeline to test, build, deploy and maintain t
 
 Project tracking was done using Trello. Tasks were assigned story points, acceptance criteria and a MoSCoW prioritisation and moved through the stages from project backlog to complete as the project progressed. 
 
-![Trello Board](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/readme/readme_images/Trello%20Board.png)
+![Trello Board](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/Trello%20Board.png)
 
 For more details, the trello board can be accessed <a href='https://trello.com/b/QLkX32iv/devops-practical'>here</a>
 
 Git was used for version control with the repository hosted on github. A feature-branch model was implemented in the project to insulate the stable version of the application from ongoing development. To show that this was achieved I've included the image below: 
 
-![Feature Branch Image](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/readme/readme_images/feature%20branch.png)
+![Feature Branch Image](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/feature%20branch.png)
 
 The development environment used was an Ubuntu 20.04 virtual machine, hosted on GCP and accessed via VSCode. 
 
@@ -117,19 +117,19 @@ Jenkins was used as a CI server. In response to a github webhook Jenkins cloned 
 
 Front-End:
 
-![Front-end Tests](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/readme/readme_images/Tests%20Front-End.png)
+![Front-end Tests](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/Tests%20Front-End.png)
 
 Personal Stats API:
 
-![Personal API Tests](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/readme/readme_images/Tests%20Personal.png)
+![Personal API Tests](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/Tests%20Personal.png)
 
 Non-Dependent Stats API:
 
-![NDStats API Tests](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/readme/readme_images/Tests%20ND%20Stats.png)
+![NDStats API Tests](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/Tests%20ND%20Stats.png)
 
 Dependent Stats API:
 
-![DStats API Tests](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/readme/readme_images/Tests%20D%20Stats.png)
+![DStats API Tests](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/Tests%20D%20Stats.png)
 
 As can be seen here, 100% coverage was achieved for all tests; this ensured that all of the functions in the app worked exactly as intended. 
 
@@ -137,19 +137,19 @@ If the tests were successful, the build/push stage uses docker-compose to build 
 
 Following the build/puish stage, the deploy stage deploys the application. First the docker-compose.yaml and nginx.conf files are copied to the manager node by secure copy (scp). Then an Ansible playbook is used to run three roles: The first installs docker on the swarm machines if it is not present already and adds Jenkins to the Docker group, the second initialises a swarm on the manager node and uses the Ansible docker stack module to deploy the application and the third adds the worker node to the swarm, creatring an overlay network that looks like so:
 
-![Overlay Network](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/readme/readme_images/Overlay%20network.png)
+![Overlay Network](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/Overlay%20network.png)
 
 Finally, in the post-build stage the HTML coverage reports are published. The results of this pipeline is shown below: 
 
-![Pipeline image](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/readme/readme_images/CICD%20Pipeline.png)
+![Pipeline image](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/Pipeline%20Image.png)
 
 Successful stages appear green, unstable builds are indicated by yellow stages and failures are indicated via red stages. If a stage fails, later stages will be skipped preventing failed versions from being deployed, this can be seen in the console output here: 
 
-![Failed Build](Link here)
+![Failed Build](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/failed%20build.png)
 
 The overall structure of the CI/CD pipeline is as follows: 
 
-![CI/CD Pipeline](Link Here)
+![CI/CD Pipeline](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/CICD%20Pipeline.png)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
