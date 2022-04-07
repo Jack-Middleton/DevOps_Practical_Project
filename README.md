@@ -135,8 +135,7 @@ As can be seen here, 100% coverage was achieved for all tests; this ensured that
 
 If the tests were successful, the build/push stage uses docker-compose to build the images for the different services, logs into docker using credentials configured on the Jenkins VM and then pushes the images to Dockerhub. The use of a Jenkins pipeline, with this stage-by-stage breakdown, makes optimisation of the project easier. The pip installs were separated into two different requirements files, one for testing and one for deployment, doing it this way eliminated unnecessary pip installs from the build stage and sped up the pipeline. 
 
-Following the build/puish stage, the deploy stage deploys the application. First the docker-compose.yaml and nginx.conf files are copied to the manager node by secure copy (scp). Then an Ansible playbook is used to run three roles: The first installs docker on the swarm machines if it is not present already and adds Jenkins to the Docker group, the second initialises a swarm on the manager node and uses the Ansible docker stack module to deploy the application and the third adds the worker node to the swarm, creatring an overlay network that looks like so:
-
+Following the build/puih stage, the deploy stage deploys the application. 
 ![Overlay Network](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/Overlay%20network.png)
 
 Finally, in the post-build stage the HTML coverage reports are published. The results of this pipeline is shown below: 
