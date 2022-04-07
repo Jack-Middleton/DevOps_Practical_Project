@@ -1,1 +1,3 @@
 test_requirements.txt
+*.md
+readme_images/
