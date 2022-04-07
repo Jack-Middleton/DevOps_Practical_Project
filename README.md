@@ -86,7 +86,7 @@ The image shows the front-end, zoomed out to show all the statistics in one scre
 
 The overall microservice architecture is as follows: 
 
-![Architecture](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/readme/readme_images/Service%20Architecture.png)
+![Architecture](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/Service%20Architecture.png)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
