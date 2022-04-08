@@ -103,7 +103,7 @@ The project utilises a full CI/CD pipeline to test, build, deploy and maintain t
 
 Project tracking was done using Trello. Tasks were assigned story points, acceptance criteria and a MoSCoW prioritisation and moved through the stages from project backlog to complete as the project progressed. 
 
-![Trello Board](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/Trello%20Board.png)
+![Trello Board](https://github.com/Jack-Middleton/DevOps_Practical_Project/blob/main/readme_images/correct%20pipeline.png)
 
 For more details, the trello board can be accessed <a href='https://trello.com/b/QLkX32iv/devops-practical'>here</a>
 
